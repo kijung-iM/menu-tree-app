@@ -10,14 +10,14 @@ const App = () => {
     url: true,
     browser: true,
     cloud: true,
-    npm: true
+    npm: true,
   });
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
-    setFilters(prevFilters => ({
+    setFilters((prevFilters) => ({
       ...prevFilters,
-      [name]: checked
+      [name]: checked,
     }));
   };
 
@@ -43,7 +43,7 @@ const App = () => {
       <div>
         <button onClick={handleCheckAll}>모두 체크</button>
         <button onClick={handleUncheckAll}>모두 해제</button>
-        {Object.keys(filters).map(key => (
+        {Object.keys(filters).map((key) => (
           <label key={key}>
             <input
               type="checkbox"

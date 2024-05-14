@@ -3,6 +3,8 @@ import { Network } from 'vis-network/standalone/esm/vis-network';
 
 const Graph = ({ filters }) => {
   const container = useRef(null);
+  const networkRef = useRef(null);
+
   const commoncolor = '#ABFDF1';
   const apmcolor = '#7FA4E9';
   const smcolor = '#C18145';
@@ -213,6 +215,8 @@ const Graph = ({ filters }) => {
         hierarchical: {
           direction: 'UD',
           sortMethod: 'directed',
+          nodeSpacing: 50, // 노드 간의 간격 조정
+          levelSeparation: 100, // 레벨 간의 간격 조정
         }
       },
       edges: {
@@ -237,13 +241,14 @@ const Graph = ({ filters }) => {
       }
     };
 
-    const network = new Network(container.current, data, options);
+    networkRef.current = new Network(container.current, data, options);
 
     const applyFilters = () => {
       const activeFilters = Object.keys(filters).filter(key => filters[key]);
 
       if (activeFilters.length === 0) {
-        network.setData(data);
+        networkRef.current.setData(data);
+        setTimeout(() => networkRef.current.fit(), 100); // 모든 노드와 엣지를 다시 표시하고 레이아웃 조정
         return;
       }
 
@@ -266,71 +271,20 @@ const Graph = ({ filters }) => {
         hidden: !edgesToShow.includes(edge)
       }));
 
-      network.setData({
+      networkRef.current.setData({
         nodes: updatedNodes,
         edges: updatedEdges
       });
+
+      setTimeout(() => {
+        networkRef.current.stabilize();
+        networkRef.current.fit();
+      }, 100); // 필터 적용 후 레이아웃 조정
     };
 
-    // 필터 변경 시 필터 적용
     applyFilters();
 
-
-    // 노드 클릭 이벤트 핸들러
-    network.on('click', function (params) {
-      if (params.nodes.length > 0) {
-        const clickedNodeId = params.nodes[0];
-        const clickedNode = nodes.find(node => node.id === clickedNodeId);
-        const nodeGroups = clickedNode.groups;
-
-        const nodesToShow = nodes.filter(node => 
-          nodeGroups.some(group => node.groups.includes(group)) || 
-          node.id === clickedNodeId
-        );
-        
-        const nodeIdsToShow = nodesToShow.map(node => node.id);
-        const edgesToShow = edges.filter(edge => 
-          nodeIdsToShow.includes(edge.from) && nodeIdsToShow.includes(edge.to)
-        );
-
-        // 업데이트할 노드와 엣지 데이터 설정
-        const updatedNodes = nodes.map(node => ({
-          ...node,
-          hidden: !nodeIdsToShow.includes(node.id)
-        }));
-
-        const updatedEdges = edges.map(edge => ({
-          ...edge,
-          hidden: !edgesToShow.includes(edge)
-        }));
-
-        // 데이터셋 업데이트
-        network.setData({
-          nodes: updatedNodes,
-          edges: updatedEdges
-        });
-      } else {
-        // 노드가 클릭되지 않은 경우 모든 노드와 엣지를 다시 표시
-        const resetNodes = nodes.map(node => ({
-          ...node,
-          hidden: false
-        }));
-
-        const resetEdges = edges.map(edge => ({
-          ...edge,
-          hidden: false
-        }));
-
-        network.setData({
-          nodes: resetNodes,
-          edges: resetEdges
-        });
-      }
-    });
-
-    return () => {
-      network.destroy();
-    };
+    return () => networkRef.current.destroy();
   }, [filters]);
 
   return <div ref={container} style={{ width: '100vw', height: '100vh' }} />;
