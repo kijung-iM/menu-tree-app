@@ -12,6 +12,7 @@ const App = () => {
     cloud: true,
     npm: true,
   });
+  const [sortMethod, setSortMethod] = useState('directed'); // Add state for sortMethod
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
@@ -37,6 +38,10 @@ const App = () => {
     setFilters(allUnchecked);
   };
 
+  const handleSortMethodChange = (event) => {
+    setSortMethod(event.target.value);
+  };
+
   return (
     <div className="App">
       <h1>WhaTap Monitoring</h1>
@@ -54,8 +59,12 @@ const App = () => {
             {key}
           </label>
         ))}
+        <select value={sortMethod} onChange={handleSortMethodChange}>
+          <option value="directed">Directed</option>
+          <option value="hubsize">Hubsize</option>
+        </select>
       </div>
-      <Graph filters={filters} />
+      <Graph filters={filters} sortMethod={sortMethod} /> {/* Pass sortMethod as a prop */}
     </div>
   );
 };
