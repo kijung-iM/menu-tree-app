@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Graph from './Graph';
 
-function App() {
+const App = () => {
+  const [filters, setFilters] = useState({
+    apm: true,
+    server: true,
+    k8s: true,
+    db: true,
+    url: true,
+    browser: true,
+    cloud: true,
+    npm: true
+  });
+
+  const handleFilterChange = (event) => {
+    const { name, checked } = event.target;
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [name]: checked
+    }));
+  };
+
+  const handleCheckAll = () => {
+    const allChecked = Object.keys(filters).reduce((acc, key) => {
+      acc[key] = true;
+      return acc;
+    }, {});
+    setFilters(allChecked);
+  };
+
+  const handleUncheckAll = () => {
+    const allUnchecked = Object.keys(filters).reduce((acc, key) => {
+      acc[key] = false;
+      return acc;
+    }, {});
+    setFilters(allUnchecked);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>WhaTap Monitoring</h1>
+      <div>
+        <button onClick={handleCheckAll}>모두 체크</button>
+        <button onClick={handleUncheckAll}>모두 해제</button>
+        {Object.keys(filters).map(key => (
+          <label key={key}>
+            <input
+              type="checkbox"
+              name={key}
+              checked={filters[key]}
+              onChange={handleFilterChange}
+            />
+            {key}
+          </label>
+        ))}
+      </div>
+      <Graph filters={filters} />
     </div>
   );
-}
+};
 
 export default App;
