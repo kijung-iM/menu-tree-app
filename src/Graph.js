@@ -22,8 +22,8 @@ const Graph = ({ filters, sortMethod, direction }) => {
       { id: 'k8s', label: 'Kubernetes', groups: ['k8s'], color: { background: k8scolor } },
       { id: 'db', label: 'Database', groups: ['db'], color: { background: dbcolor } },
       { id: 'url', label: 'URL', groups: ['url'], color: { background: urlcolor } },
-      { id: 'browser', label: 'Browser', groups: ['browser'], color: { background: brcolor } },
       { id: 'cloud', label: 'Cloud', groups: ['cloud'], color: { background: cloudcolor } },
+      { id: 'browser', label: 'Browser', groups: ['browser'], color: { background: brcolor } },
       { id: 'npm', label: 'NPM', groups: ['npm'], color: { background: npmcolor } },
       // mid
       { id: 'urlList', label: 'URL 목록', groups: ['url', 'mid'], color: { background: dbcolor } },
