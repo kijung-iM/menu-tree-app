@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Graph from './Graph';
+import './index.css';
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -13,6 +14,8 @@ const App = () => {
     npm: true,
   });
   const [sortMethod, setSortMethod] = useState('directed'); // Add state for sortMethod
+
+  const [direction, setDirection] = useState('UD'); // Add state for sortMethod
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
@@ -42,9 +45,14 @@ const App = () => {
     setSortMethod(event.target.value);
   };
 
+  const handlesetDirection = (event) => {
+    setDirection(event.target.value);
+  };
+
   return (
     <div className="App">
       <h1>WhaTap Monitoring</h1>
+      <p></p>
       <div>
         <button onClick={handleCheckAll}>모두 체크</button>
         <button onClick={handleUncheckAll}>모두 해제</button>
@@ -63,8 +71,12 @@ const App = () => {
           <option value="directed">Directed</option>
           <option value="hubsize">Hubsize</option>
         </select>
+        <select value={direction} onChange={handlesetDirection}>
+          <option value="UD">Up to Down</option>
+          <option value="LR">Left to Right</option>
+        </select>
       </div>
-      <Graph filters={filters} sortMethod={sortMethod} /> {/* Pass sortMethod as a prop */}
+      <Graph filters={filters} sortMethod={sortMethod} direction={direction} /> {/* Pass sortMethod as a prop */}
     </div>
   );
 };
