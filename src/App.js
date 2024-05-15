@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Graph from './Graph';
-import './index.css';
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -52,7 +51,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>WhaTap Monitoring</h1>
-      <p></p>
+      <p><a href="https://github.com/whatap/menu-tree-app.git" target="_blank" rel="noreferrer">whatap/menu-tree-app</a></p>
       <div>
         <button onClick={handleCheckAll}>모두 체크</button>
         <button onClick={handleUncheckAll}>모두 해제</button>
