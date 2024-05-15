@@ -29,6 +29,12 @@
 
 참조: <https://github.com/visjs/vis-network.git>
 
+## 개발 환경 테스트
+
+```
+yarn start
+```
+
 ## 배포
 
 Action의 트리커 메뉴를 이용해 배포할 수 있습니다. 배포 주소는 <https://whatap.github.io/menu-tree-app/> 입니다.
