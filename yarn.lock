@@ -8095,6 +8095,13 @@ serialize-javascript@^6.0.0, serialize-javascript@^6.0.1:
   dependencies:
     randombytes "^2.1.0"
 
+serve-http@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/serve-http/-/serve-http-1.0.7.tgz#7f7f84b782e3a6f14865500d6c708530ec86956d"
+  integrity sha512-zuzrXKy9q+zaZKrS0MFWBK0bA0Yu9tF4lMdxb49ue6i3WsGj4qX3zynZz7uev3/JkvbxUbRHCZCBgiUIDJPdbQ==
+  optionalDependencies:
+    source-map-support "^0.5.21"
+
 serve-index@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/serve-index/-/serve-index-1.9.1.tgz#d3768d69b1e7d82e5ce050fff5b453bea12a9239"
@@ -8230,7 +8237,7 @@ source-map-loader@^3.0.0:
     iconv-lite "^0.6.3"
     source-map-js "^1.0.1"
 
-source-map-support@^0.5.6, source-map-support@~0.5.20:
+source-map-support@^0.5.21, source-map-support@^0.5.6, source-map-support@~0.5.20:
   version "0.5.21"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
   integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
