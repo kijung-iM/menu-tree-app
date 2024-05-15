@@ -353,11 +353,13 @@ const Graph = ({ filters, sortMethod, direction }) => {
       },
       edges: {
         color: '#333333',
-        smooth: true,
+        smooth: {
+          enabled: true,
+        },
         arrows: {
           to: {
-            enabled: true,
-            scaleFactor: 1.2
+            // enabled: true,
+            scaleFactor: 1
           }
         }
       },
@@ -365,7 +367,8 @@ const Graph = ({ filters, sortMethod, direction }) => {
         shape: 'box',
         size: 20,
         font: {
-          size: 14
+          size: 14,
+          align: 'left'
         }
       },
       physics: {

@@ -14,7 +14,7 @@ const App = () => {
   });
   const [sortMethod, setSortMethod] = useState('directed'); // Add state for sortMethod
 
-  const [direction, setDirection] = useState('UD'); // Add state for sortMethod
+  const [direction, setDirection] = useState('LR'); // Add state for sortMethod
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
@@ -71,8 +71,8 @@ const App = () => {
           <option value="hubsize">Hubsize</option>
         </select>
         <select value={direction} onChange={handlesetDirection}>
-          <option value="UD">Up to Down</option>
           <option value="LR">Left to Right</option>
+          <option value="UD">Up to Down</option>
         </select>
       </div>
       <Graph filters={filters} sortMethod={sortMethod} direction={direction} /> {/* Pass sortMethod as a prop */}
