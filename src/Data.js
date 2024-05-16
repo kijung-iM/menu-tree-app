@@ -9,14 +9,14 @@ export const cloudcolor = '#F1E187';
 export const npmcolor = '#E7B579';
 
 export const nodes = [
-  { id: 'apm', label: 'Application', groups: ['apm'], color: { background: apmcolor } },
-  { id: 'server', label: 'Server', groups: ['server'], color: { background: smcolor } },
-  { id: 'k8s', label: 'Kubernetes', groups: ['k8s'], color: { background: k8scolor } },
-  { id: 'db', label: 'Database', groups: ['db'], color: { background: dbcolor } },
-  { id: 'url', label: 'URL', groups: ['url'], color: { background: urlcolor } },
-  { id: 'cloud', label: 'Cloud', groups: ['cloud'], color: { background: cloudcolor } },
-  { id: 'browser', label: 'Browser', groups: ['browser'], color: { background: brcolor } },
-  { id: 'npm', label: 'NPM', groups: ['npm'], color: { background: npmcolor } },
+  { id: 'apm', label: 'Application', groups: ['apm'], color: { background: apmcolor }, shape: 'circle' },
+  { id: 'server', label: 'Server', groups: ['server'], color: { background: smcolor }, shape: 'circle'  },
+  { id: 'k8s', label: 'Kubernetes', groups: ['k8s'], color: { background: k8scolor }, shape: 'circle'  },
+  { id: 'db', label: 'Database', groups: ['db'], color: { background: dbcolor }, shape: 'circle'  },
+  { id: 'url', label: 'URL', groups: ['url'], color: { background: urlcolor } , shape: 'circle' },
+  { id: 'cloud', label: 'Cloud', groups: ['cloud'], color: { background: cloudcolor }, shape: 'circle'  },
+  { id: 'browser', label: 'Browser', groups: ['browser'], color: { background: brcolor }, shape: 'circle'  },
+  { id: 'npm', label: 'NPM', groups: ['npm'], color: { background: npmcolor }, shape: 'circle'  },
   // mid
   { id: 'urlList', label: 'URL 목록', groups: ['url', 'mid'], color: { background: dbcolor } },
   { id: 'vendorService', label: 'Cloud(Vender) 모니터링', groups: ['cloud', 'mid'], color: { background: cloudcolor } },
