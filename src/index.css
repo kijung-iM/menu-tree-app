@@ -2,7 +2,54 @@
   text-align: center;
 }
 
+.menutable {
+  margin: auto;
+  width: 80vw;
+}
+
+table {
+  display: table;
+  border-collapse: collapse;
+  width: fit-content;
+}
+
+table td {
+  padding: 3px;
+}
+
 h1 {
   font-size: 45px;
   margin: 20px;
+}
+
+#menuitem {
+  border-bottom: 1px solid #333;
+  padding: 2px 0;
+}
+.color-E7BCFF {
+  background-color: #E7BCFF;
+}
+.color-ABFDF1 {
+  background-color: #ABFDF1;
+}
+.color-C18145 {
+  background-color: #C18145;
+}
+.color-BCD9FF {
+  background-color: #BCD9FF;
+}
+.color-3AB48B {
+  background-color: #3AB48B
+}
+.color-4AC353 {
+  background-color: #4AC353;
+}
+.color-C46FD5 {
+  background-color: #C46FD5;
+}
+.color-F1E187 {
+  background-color: #F1E187;
+}
+.color-E7B579 {
+  background-color: #E7B579;
 }

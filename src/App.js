@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Graph from './Graph';
+import TableComponent from './TableComponent';
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -12,9 +13,8 @@ const App = () => {
     cloud: true,
     npm: true,
   });
-  const [sortMethod, setSortMethod] = useState('directed'); // Add state for sortMethod
-
-  const [direction, setDirection] = useState('LR'); // Add state for sortMethod
+  const [sortMethod, setSortMethod] = useState('directed');
+  const [direction, setDirection] = useState('LR');
 
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
@@ -75,7 +75,8 @@ const App = () => {
           <option value="UD">Up to Down</option>
         </select>
       </div>
-      <Graph filters={filters} sortMethod={sortMethod} direction={direction} /> {/* Pass sortMethod as a prop */}
+      <Graph filters={filters} sortMethod={sortMethod} direction={direction} />
+      <TableComponent filters={filters} />
     </div>
   );
 };
