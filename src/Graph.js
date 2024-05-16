@@ -13,6 +13,7 @@ const Graph = ({ filters, sortMethod, direction }) => {
       layout: {
         improvedLayout: true,
         hierarchical: {
+          enabled: false,
           direction,
           sortMethod,
           nodeSpacing: 100, // 노드 간의 간격 조정
@@ -94,7 +95,7 @@ const Graph = ({ filters, sortMethod, direction }) => {
     return () => networkRef.current.destroy();
   }, [filters, sortMethod, direction]);
 
-  return <div ref={container} style={{ width: '80vw', height: '80vh', border: '1px solid #333', margin: '20px auto' }} />;
+  return <div ref={container} style={{ width: '80vw', height: '50vh', border: '1px solid #333', margin: '20px auto' }} />;
 };
 
 export default Graph;
