@@ -16,17 +16,20 @@ const initDiagram = () => {
       angle: 0,  // 트리 방향 (0도: 위에서 아래로)
       layerSpacing: 500,  // 레이어 간의 간격
       nodeSpacing: 10,  // 노드 간의 간격
-      alignment: go.TreeAlignment.Start  // 정렬 방식 (여기서는 왼쪽 정렬)
+      alignment: go.TreeAlignment.Start   // 정렬 방식 (여기서는 왼쪽 정렬)
     }),
     'toolManager.mouseWheelBehavior': go.WheelMode.Zoom  // 마우스 휠로 확대/축소 설정
   });
 
   diagram.nodeTemplate = $(
     go.Node, "Auto",
-    $(go.Shape, "RoundedRectangle", { 
-      fill: "white"
+    { 
+      selectionChanged: (node) => {
+        node.findLinksConnected().each(link => link.isHighlighted = node.isSelected);
+      }
     },
-    new go.Binding("fill", "color", (c) => c.background)),
+    $(go.Shape, "RoundedRectangle", { fill: "white" },
+      new go.Binding("fill", "color", (c) => c.background)),
     $(go.TextBlock, { margin: 5 },
       new go.Binding("text", "label"))
   );
@@ -35,14 +38,19 @@ const initDiagram = () => {
     go.Link,
     { 
       curve: go.Curve.Bezier, 
+      toEndSegmentLength: 300,
+      fromEndSegmentLength: 300,
       reshapable: true,
       curviness: 40,
       adjusting: go.LinkAdjusting.Stretch,
       reshapable: true,
       relinkableFrom: true,
       relinkableTo: true,
+      selectionAdorned: false,
+      isHighlighted: false
     },  // 선 모양을 곡선으로 설정
-    $(go.Shape, { strokeWidth: 0.5 }),  // 링크 선 모양
+    $(go.Shape, { strokeWidth: 0.5 }, 
+      new go.Binding("stroke", "isHighlighted", h => h ? "#E3CB00" : "black").ofObject()),  // 링크 선 모양
     $(go.Shape, { toArrow: "" })  // 화살표 제거
   );
 
