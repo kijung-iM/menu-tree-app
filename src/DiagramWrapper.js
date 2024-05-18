@@ -16,7 +16,7 @@ const initDiagram = () => {
       angle: 0,  // 트리 방향 (0도: 위에서 아래로)
       layerSpacing: 500,  // 레이어 간의 간격
       nodeSpacing: 10,  // 노드 간의 간격
-      alignment: go.TreeAlignment.Start   // 정렬 방식 (여기서는 왼쪽 정렬)
+      alignment: go.TreeAlignment.Start  // 정렬 방식 (여기서는 왼쪽 정렬)
     }),
     'toolManager.mouseWheelBehavior': go.WheelMode.Zoom  // 마우스 휠로 확대/축소 설정
   });
@@ -40,7 +40,6 @@ const initDiagram = () => {
       curve: go.Curve.Bezier, 
       toEndSegmentLength: 300,
       fromEndSegmentLength: 300,
-      reshapable: true,
       curviness: 40,
       adjusting: go.LinkAdjusting.Stretch,
       reshapable: true,
@@ -57,18 +56,22 @@ const initDiagram = () => {
   return diagram;
 }
 
-const DiagramWrapper = () => {
+const DiagramWrapper = ({ filters }) => {
   const diagramRef = useRef();
+
+  const filteredNodes = nodes.filter(node => 
+    node.groups.some(group => filters[group])
+  );
 
   useEffect(() => {
     if (diagramRef.current) {
       const diagram = diagramRef.current.getDiagram();
       diagram.model = new go.GraphLinksModel(
-        nodes.map(node => ({ key: node.id, ...node })),
+        filteredNodes.map(node => ({ key: node.id, ...node })),
         edges.map(edge => ({ from: edge.from, to: edge.to }))
       );
     }
-  }, []);
+  }, [filters]);
 
   return (
     <ReactDiagram

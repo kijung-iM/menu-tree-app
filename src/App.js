@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Graph from './Graph';
 import TableComponent from './TableComponent';
 import { DiagramWrapper } from './DiagramWrapper';
-
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -15,9 +13,7 @@ const App = () => {
     cloud: true,
     npm: true,
   });
-  const [sortMethod, setSortMethod] = useState('directed');
-  const [direction, setDirection] = useState('LR');
-
+  
   const handleFilterChange = (event) => {
     const { name, checked } = event.target;
     setFilters((prevFilters) => ({
@@ -42,14 +38,6 @@ const App = () => {
     setFilters(allUnchecked);
   };
 
-  const handleSortMethodChange = (event) => {
-    setSortMethod(event.target.value);
-  };
-
-  const handlesetDirection = (event) => {
-    setDirection(event.target.value);
-  };
-
   return (
     <div className="App">
       <h1>WhaTap Monitoring</h1>
@@ -68,17 +56,8 @@ const App = () => {
             {key}
           </label>
         ))}
-        <select value={sortMethod} onChange={handleSortMethodChange}>
-          <option value="directed">Directed</option>
-          <option value="hubsize">Hubsize</option>
-        </select>
-        <select value={direction} onChange={handlesetDirection}>
-          <option value="LR">Left to Right</option>
-          <option value="UD">Up to Down</option>
-        </select>
       </div>
-      <DiagramWrapper />
-      {/* <Graph filters={filters} sortMethod={sortMethod} direction={direction} /> */}
+      <DiagramWrapper filters={filters} />
       <TableComponent filters={filters} />
     </div>
   );
