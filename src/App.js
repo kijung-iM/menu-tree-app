@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Graph from './Graph';
 import TableComponent from './TableComponent';
+import { DiagramWrapper } from './DiagramWrapper';
+
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -75,7 +77,8 @@ const App = () => {
           <option value="UD">Up to Down</option>
         </select>
       </div>
-      <Graph filters={filters} sortMethod={sortMethod} direction={direction} />
+      <DiagramWrapper />
+      {/* <Graph filters={filters} sortMethod={sortMethod} direction={direction} /> */}
       <TableComponent filters={filters} />
     </div>
   );
