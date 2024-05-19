@@ -68,10 +68,10 @@ const DiagramWrapper = ({ filters }) => {
       const diagram = diagramRef.current.getDiagram();
       diagram.model = new go.GraphLinksModel(
         filteredNodes.map(node => ({ key: node.id, ...node })),
-        edges.map(edge => ({ from: edge.from, to: edge.to }))
+        edges
       );
     }
-  }, [filteredNodes, edges]);
+  }, [filters]);
 
   return (
     <ReactDiagram
