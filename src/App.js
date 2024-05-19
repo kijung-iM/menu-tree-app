@@ -57,8 +57,10 @@ const App = () => {
           </label>
         ))}
       </div>
-      <DiagramWrapper filters={filters} />
-      <TableComponent filters={filters} />
+      <div class="grid">
+        <DiagramWrapper filters={filters} />
+        <TableComponent filters={filters} />
+      </div>
     </div>
   );
 };

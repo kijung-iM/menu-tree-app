@@ -48,7 +48,7 @@ const initDiagram = () => {
       selectionAdorned: false,
       isHighlighted: false
     },  // 선 모양을 곡선으로 설정
-    $(go.Shape, { strokeWidth: 0.5 }, 
+    $(go.Shape, { strokeWidth: 1 }, 
       new go.Binding("stroke", "isHighlighted", h => h ? "#E3CB00" : "black").ofObject()),  // 링크 선 모양
     $(go.Shape, { toArrow: "" })  // 화살표 제거
   );
