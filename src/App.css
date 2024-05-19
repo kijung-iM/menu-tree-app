@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.goJSmessage {
+  position: absolute;
+  bottom: 10px;  /* 메시지를 화면 하단으로 이동 */
+  right: 10px;  /* 메시지를 화면 오른쪽으로 이동 */
+  background-color: rgba(0, 0, 0, 0.5);  /* 반투명 배경 */
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  z-index: 1000;  /* 메시지가 다른 요소 위에 표시되도록 */
+}

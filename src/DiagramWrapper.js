@@ -71,14 +71,14 @@ const DiagramWrapper = ({ filters }) => {
         edges.map(edge => ({ from: edge.from, to: edge.to }))
       );
     }
-  }, [filters]);
+  }, [filteredNodes, edges]);
 
   return (
     <ReactDiagram
       ref={diagramRef}
       initDiagram={initDiagram}
       divClassName='diagram-component'
-      style={{ width: '80vw', height: '50vh', border: '1px solid #333', margin: '20px auto' }}
+      style={{ width: '100vw', height: '50vh', border: '1px solid #333', margin: '20px auto' }}
     />
   );
 }
