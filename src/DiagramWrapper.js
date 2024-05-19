@@ -59,11 +59,11 @@ const initDiagram = () => {
 const DiagramWrapper = ({ filters }) => {
   const diagramRef = useRef();
 
-  const filteredNodes = nodes.filter(node => 
-    node.groups.some(group => filters[group])
-  );
-
   useEffect(() => {
+    const filteredNodes = nodes.filter(node => 
+      node.groups.some(group => filters[group])
+    );
+
     if (diagramRef.current) {
       const diagram = diagramRef.current.getDiagram();
       diagram.model = new go.GraphLinksModel(
