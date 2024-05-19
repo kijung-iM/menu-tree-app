@@ -1,9 +1,4 @@
-/*! Hammer.JS - v2.0.17-rc - 2019-12-16
- * http://naver.github.io/egjs
- *
- * Forked By Naver egjs
- * Copyright (c) hammerjs
- * Licensed under the MIT license */
+/*! Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved. */
 
 /**
  * @license React
