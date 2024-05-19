@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://whatap.github.io/menu-tree-app",
   "dependencies": {
+    "gojs": "^3.0.2",
+    "gojs-react": "^1.1.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
